@@ -1,1 +1,1 @@
-# practice_project
+# Fashion recommendation System
