@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .recommendations {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fashion Recommendation System</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload T-Shirt Image</button>
+        </form>
+        
+        {% if recommended %}
+            <h2>Input Image:</h2>
+            <img src="{{ url_for('image', folder='uploads', filename=recommended.input) }}" alt="Input T-Shirt">
+            
+            <h2>Recommended Items:</h2>
+            <div class="recommendations">
+                <div>
+                    <h3>Watch</h3>
+                    <img src="{{ url_for('image', folder='Watch', filename=recommended.watch) }}" alt="Recommended Watch">
+                </div>
+                <div>
+                    <h3>Shoes</h3>
+                    <img src="{{ url_for('image', folder='shoes', filename=recommended.shoes) }}" alt="Recommended Shoes">
+                </div>
+                <div>
+                    <h3>Pants</h3>
+                    <img src="{{ url_for('image', folder='Jeans', filename=recommended.pants) }}" alt="Recommended Pants">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
